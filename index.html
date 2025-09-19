@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Notebook App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="root">
+    <!-- Auth screens -->
+    <div id="auth" class="card">
+      <h1>Notebook</h1>
+      <div id="auth-forms">
+        <div id="signup-form" class="auth-form hidden">
+          <h2>Create account</h2>
+          <input id="signup-username" placeholder="Username" />
+          <input id="signup-password" type="password" placeholder="Password" />
+          <button id="signup-btn">Sign up</button>
+          <p class="small">Already have an account? <a href="#" id="to-login">Login</a></p>
+        </div>
+
+        <div id="login-form" class="auth-form">
+          <h2>Login</h2>
+          <input id="login-username" placeholder="Username" />
+          <input id="login-password" type="password" placeholder="Password" />
+          <button id="login-btn">Login</button>
+          <p class="small">No account? <a href="#" id="to-signup">Create one</a></p>
+        </div>
+      </div>
+      <div id="auth-msg" class="msg"></div>
+    </div>
+
+    <!-- Main app -->
+    <div id="app" class="hidden">
+      <header>
+        <h1>My Notes</h1>
+        <div class="header-controls">
+          <input id="search" placeholder="Search notes..." />
+          <select id="sort"><option value="new">Newest</option><option value="old">Oldest</option></select>
+          <button id="logout-btn">Logout</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="editor card">
+          <input id="note-title" placeholder="Title" />
+          <textarea id="note-content" placeholder="Write your note here..." rows="6"></textarea>
+          <div class="editor-actions">
+            <button id="save-note">Save</button>
+            <button id="clear-note" class="muted">Clear</button>
+          </div>
+        </section>
+
+        <section class="notes-list">
+          <div id="notes-container"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <template id="note-template">
+    <article class="note card">
+      <h3 class="note-title"></h3>
+      <p class="note-body"></p>
+      <div class="note-meta">
+        <span class="note-time"></span>
+        <div class="note-actions">
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
